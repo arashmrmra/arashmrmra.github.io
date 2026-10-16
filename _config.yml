@@ -1,0 +1,12 @@
+title: وبلاگ معمولی
+description: یادداشت‌هایی درباره برنامه‌نویسی، لینوکس و ساختن چیزها
+url: "https://arashmrmra.github.io"
+baseurl: ""
+lang: fa
+timezone: Asia/Tehran
+markdown: kramdown
+permalink: /posts/:title/
+plugins: []
+exclude:
+  - README.md
+  - demo
