@@ -1,0 +1,14 @@
+---
+layout: default
+---
+<article class="article-page">
+  <a class="back-link" href="{{ '/' | relative_url }}">← بازگشت به همه نوشته‌ها</a>
+  <header class="article-header">
+    {% if page.category %}<span class="eyebrow">{{ page.category }}</span>{% endif %}
+    <h1>{{ page.title | escape }}</h1>
+    {% if page.description %}<p class="article-description">{{ page.description | escape }}</p>{% endif %}
+    <div class="article-meta"><time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: "%-d %B %Y" }}</time><span>·</span><span>{{ page.author | default: site.title }}</span></div>
+  </header>
+  <div class="article-content">{{ content }}</div>
+  <div class="article-end"><span>پایان این نوشته</span><a href="{{ '/' | relative_url }}">نوشته‌های بیشتر ←</a></div>
+</article>
