@@ -1,28 +1,51 @@
-<!doctype html>
-<html lang="fa" dir="rtl">
-<head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="theme-color" content="#0b0d12"><meta name="description" content="یادداشت‌هایی درباره برنامه‌نویسی، لینوکس و ساختن چیزها">
-<title>وبلاگ معمولی</title>
-<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-<style>
-:root{color-scheme:dark;--bg:#0b0d12;--panel:#11151d;--line:#252d3a;--text:#eef2f8;--muted:#9aa6b8;--accent:#9a9cff}*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--text);font-family:Vazirmatn,Tahoma,sans-serif;line-height:1.9}.wrap{width:min(1000px,calc(100% - 32px));margin:auto}header{height:78px;border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between}.brand{font-weight:800;font-size:18px}.brand b{display:inline-grid;place-items:center;background:linear-gradient(135deg,#899aff,#c09aff);color:#0b0d12;width:38px;height:38px;border-radius:12px;margin-left:9px}nav{display:flex;gap:24px;color:var(--muted);font-size:14px}a{color:inherit;text-decoration:none}nav a:hover,a:hover{color:var(--accent)}.hero{padding:90px 4% 80px;border-bottom:1px solid var(--line);background:radial-gradient(ellipse at 15% 10%,#27244755,transparent 55%)}.eyebrow{font-size:13px;color:var(--muted)}h1{font-size:clamp(36px,6vw,62px);line-height:1.4;margin:16px 0}.gradient{background:linear-gradient(100deg,#8b9cff,#c09aff);color:transparent;background-clip:text}.intro{max-width:570px;color:var(--muted)}.button{display:inline-block;margin-top:18px;padding:10px 18px;border-radius:12px;background:linear-gradient(110deg,#8b9cff,#c09aff);color:#10111a;font-weight:700}.section{padding:55px 0}.heading{display:flex;align-items:center;justify-content:space-between}.heading h2{font-size:26px}.tools{display:flex;gap:12px;flex-wrap:wrap;margin:20px 0}.tools input,.tools select{background:var(--panel);color:var(--text);border:1px solid var(--line);border-radius:11px;padding:10px 13px;font:inherit}.tools input{flex:1;min-width:200px}.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}.card{background:var(--panel);border:1px solid var(--line);border-radius:17px;padding:22px;transition:transform .2s,border-color .2s}.card:hover{transform:translateY(-3px);border-color:#777ce0}.tag{font-size:12px;color:var(--accent)}.card h3{margin:12px 0 6px;font-size:19px}.card p{color:var(--muted);font-size:14px}.meta{color:var(--muted);font-size:12px}.about{margin:35px 0 60px;padding:23px;border:1px solid var(--line);border-radius:16px;background:#15152555}.about p,footer{color:var(--muted);font-size:13px}footer{border-top:1px solid var(--line);padding:25px 0;display:flex;justify-content:space-between;gap:15px;flex-wrap:wrap}.empty{color:var(--muted);padding:20px 0}@media(max-width:620px){nav{gap:12px;font-size:12px}.hero{padding:60px 2%}.grid{grid-template-columns:1fr}.heading h2{font-size:22px}}
-</style></head>
-<body><div class="wrap">
-<header><a class="brand" href="#"><b>م</b>وبلاگ معمولی</a><nav><a href="#">خانه</a><a href="#articles">مقاله‌ها</a><a href="#about">درباره</a></nav></header>
-<main><section class="hero"><p class="eyebrow">✳ یادداشت‌هایی از مسیر یادگیری</p><h1>ایده‌ها را یاد بگیر؛<br><span class="gradient">چیزهای واقعی بساز.</span></h1><p class="intro">جایی برای تجربه‌ها، پروژه‌ها و یادداشت‌هایی درباره برنامه‌نویسی، لینوکس و دنیای فناوری.</p><a class="button" href="#articles">مطالعه مقاله‌ها ↙</a></section>
-<section class="section" id="articles"><div class="heading"><h2>آخرین نوشته‌ها</h2><span class="meta">شروع وبلاگ</span></div><div class="tools"><input id="search" type="search" placeholder="جست‌وجو در مقاله‌ها..." aria-label="جست‌وجو"><select id="category" aria-label="دسته‌بندی"><option value="all">همه دسته‌ها</option><option value="شروع کار">شروع کار</option><option value="برنامه‌نویسی">برنامه‌نویسی</option><option value="لینوکس">لینوکس</option></select></div>
-<div class="grid" id="grid">
-<article class="card" data-category="شروع کار"><span class="tag">شروع کار</span><h3><a href="#welcome">به وبلاگ معمولی خوش آمدی</a></h3><p>معرفی وبلاگ و اینکه چطور نوشته‌ها و تجربه‌ها را قدم‌به‌قدم ثبت می‌کنیم.</p><div class="meta">۱۶ اکتبر ۲۰۲۶ · ۲ دقیقه مطالعه</div></article>
-<article class="card" data-category="برنامه‌نویسی"><span class="tag">برنامه‌نویسی</span><h3><a href="#markdown">چطور مقالهٔ تازه اضافه کنیم؟</a></h3><p>راهنمای کوتاه مدیریت محتوا و آماده‌شدن برای اضافه‌کردن Markdown و انتشار خودکار.</p><div class="meta">راهنمای وبلاگ · ۳ دقیقه مطالعه</div></article>
-</div><p class="empty" id="empty" hidden>مقاله‌ای پیدا نشد.</p>
-<article class="card" id="welcome" style="margin-top:18px"><h2>به وبلاگ معمولی خوش آمدی 👋</h2><p>این وبلاگ جایی برای ثبت یادگیری‌ها، تجربه‌های برنامه‌نویسی و پروژه‌هایی است که قدم‌به‌قدم می‌سازیم. قرار نیست فقط نتیجهٔ نهایی را ببینیم؛ اینجا می‌توانیم مسیر رسیدن به نتیجه و چیزهایی را که یاد می‌گیریم هم ثبت کنیم.</p></article>
-<article class="card" id="markdown" style="margin-top:18px"><h2>مدیریت نوشته‌ها</h2><p>در نسخهٔ بعد، نوشته‌ها را به صورت فایل‌های Markdown در پوشهٔ مخصوص مقاله‌ها نگه می‌داریم و GitHub Pages آن‌ها را به صفحات جداگانه تبدیل می‌کند. این روش بدون نیاز به سرور، رایگان و برای نگهداری بلندمدت ساده است.</p></article>
-</section><section class="about" id="about"><h2>دربارهٔ این وبلاگ</h2><p>ساخته‌شده با کنجکاوی و کمی کد. موضوع‌ها: برنامه‌نویسی، لینوکس، سیستم‌عامل و پروژه‌های شخصی.</p></section></main>
-<footer><span>وبلاگ معمولی ✳</span><a href="https://github.com/arashmrmra/arashmrmra.github.io">مشاهدهٔ مخزن در GitHub ↗</a><span>HTML · CSS · JavaScript</span></footer>
-</div><script>
-const search=document.querySelector('#search'),category=document.querySelector('#category'),cards=[...document.querySelectorAll('#grid .card')],empty=document.querySelector('#empty');
-function filter(){let n=0;cards.forEach(c=>{const ok=c.innerText.toLocaleLowerCase('fa').includes(search.value.trim().toLocaleLowerCase('fa'))&&(category.value==='all'||c.dataset.category===category.value);c.hidden=!ok;if(ok)n++});empty.hidden=n>0}
-search.addEventListener('input',filter);category.addEventListener('change',filter);
-</script></body></html>
+---
+layout: default
+title: خانه
+description: یادداشت‌هایی درباره برنامه‌نویسی، لینوکس و ساختن چیزها
+---
+<section class="hero">
+  <span class="eyebrow">یک گوشهٔ کوچک از اینترنت</span>
+  <h1>سلام، اینجا <span>وبلاگ معمولی</span> است.</h1>
+  <p>یادداشت‌هایی از مسیر یادگیری، برنامه‌نویسی و ساختن چیزها. ساده، صادقانه و قدم‌به‌قدم.</p>
+</section>
+
+<section aria-labelledby="posts-title">
+  <div class="section-heading">
+    <div><h2 id="posts-title">نوشته‌ها</h2><p>ایده‌ها و تجربه‌هایی که ارزش ثبت‌کردن دارند.</p></div>
+    <span class="eyebrow">{{ site.posts | size }} نوشته</span>
+  </div>
+
+  <div class="tools">
+    <input class="search-box" id="post-search" type="search" placeholder="جست‌وجو در عنوان و متن نوشته‌ها…" aria-label="جست‌وجو در نوشته‌ها">
+  </div>
+
+  <div class="category-list" aria-label="فیلتر دسته‌بندی">
+    <button class="category-button active" type="button" data-category-filter="همه" aria-pressed="true">همه</button>
+    {% assign categories = site.posts | map: "category" | compact | uniq | sort %}
+    {% for category in categories %}
+      <button class="category-button" type="button" data-category-filter="{{ category | escape }}" aria-pressed="false">{{ category }}</button>
+    {% endfor %}
+  </div>
+
+  <div class="post-grid" id="post-grid">
+    {% for post in site.posts %}
+      <article class="post-card" data-post-card data-category="{{ post.category | default: 'بدون دسته' | escape }}" data-search="{{ post.title | append: ' ' | append: post.description | append: ' ' | append: post.content | strip_html | normalize_whitespace | escape }}">
+        <span class="eyebrow">{{ post.category | default: "یادداشت" }}</span>
+        <h3><a href="{{ post.url | relative_url }}">{{ post.title | escape }}</a></h3>
+        <p>{{ post.description | default: post.excerpt | strip_html | truncate: 150 }}</p>
+        <div class="post-meta">
+          <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%-d %B %Y" }}</time>
+          <a class="read-more" href="{{ post.url | relative_url }}">ادامهٔ مطلب ←</a>
+        </div>
+      </article>
+    {% else %}
+      <div class="empty-state">هنوز نوشته‌ای منتشر نشده؛ به‌زودی اولین نوشته اضافه می‌شود.</div>
+    {% endfor %}
+  </div>
+  <p class="empty-state" id="empty-state" hidden>نوشته‌ای با این جست‌وجو پیدا نشد.</p>
+</section>
+
+<section class="about" id="about">
+  <h2>دربارهٔ این وبلاگ</h2>
+  <p>این وبلاگ جایی برای ثبت یادگیری‌ها، پروژه‌های شخصی و چیزهایی است که در مسیر برنامه‌نویسی و کار با لینوکس کشف می‌کنم. نوشته‌ها با Markdown نگهداری می‌شوند تا اضافه‌کردن مطلب تازه ساده باشد.</p>
+</section>
