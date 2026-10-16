@@ -1,0 +1,57 @@
+name: Prepare English translation
+
+on:
+  workflow_dispatch:
+    inputs:
+      source_path:
+        description: "Path to a Persian Markdown post in _posts/"
+        required: true
+        type: string
+
+permissions:
+  contents: write
+  pull-requests: write
+
+concurrency:
+  group: translate-post-${{ inputs.source_path }}
+  cancel-in-progress: false
+
+jobs:
+  translate:
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Check out source
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          ref: main
+          persist-credentials: true
+      - name: Set up Python
+        uses: actions/setup-python@42375524e23c412d93fb67b49958b491fce71c38
+        with:
+          python-version: "3.12"
+      - name: Generate translation draft
+        env:
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          OPENAI_MODEL: gpt-4.1-mini
+          SOURCE_PATH: ${{ inputs.source_path }}
+        run: python .github/scripts/translate_post.py "$SOURCE_PATH"
+      - name: Validate generated files
+        run: python -m unittest discover -s tests -v
+      - name: Create review branch and pull request
+        env:
+          GH_TOKEN: ${{ github.token }}
+          SOURCE_PATH: ${{ inputs.source_path }}
+        run: |
+          set -euo pipefail
+          SLUG="$(basename "$SOURCE_PATH" .md)"
+          BRANCH="translation-draft/${SLUG}"
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git switch -c "$BRANCH"
+          git add _posts
+          git diff --cached --check
+          git commit -m "Prepare English translation draft for ${SLUG}"
+          git push --set-upstream origin "$BRANCH"
+          gh pr create --base main --head "$BRANCH" --title "Review English translation: ${SLUG}" --body "AI-generated draft: human review is required before merging. Check translation quality, code blocks, links, front matter, canonical URLs, hreflang, and sitemap entries."
