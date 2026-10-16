@@ -1,51 +1,39 @@
 ---
 layout: default
 title: خانه
+lang: fa
+direction: rtl
+site_label: وبلاگ معمولی
+home_url: /
+about_url: /#about
 description: یادداشت‌هایی درباره برنامه‌نویسی، لینوکس و ساختن چیزها
 ---
+{% assign language_posts = site.posts | where: "lang", "fa" %}
 <section class="hero">
   <span class="eyebrow">یک گوشهٔ کوچک از اینترنت</span>
   <h1>سلام، اینجا <span>وبلاگ معمولی</span> است.</h1>
   <p>یادداشت‌هایی از مسیر یادگیری، برنامه‌نویسی و ساختن چیزها. ساده، صادقانه و قدم‌به‌قدم.</p>
 </section>
-
 <section aria-labelledby="posts-title">
   <div class="section-heading">
     <div><h2 id="posts-title">نوشته‌ها</h2><p>ایده‌ها و تجربه‌هایی که ارزش ثبت‌کردن دارند.</p></div>
-    <span class="eyebrow">{{ site.posts | size }} نوشته</span>
+    <span class="eyebrow">{{ language_posts | size }} نوشته</span>
   </div>
-
-  <div class="tools">
-    <input class="search-box" id="post-search" type="search" placeholder="جست‌وجو در عنوان و متن نوشته‌ها…" aria-label="جست‌وجو در نوشته‌ها">
-  </div>
-
+  <div class="tools"><input class="search-box" id="post-search" type="search" placeholder="جست‌وجو در عنوان و متن نوشته‌ها…" aria-label="جست‌وجو در نوشته‌ها"></div>
   <div class="category-list" aria-label="فیلتر دسته‌بندی">
     <button class="category-button active" type="button" data-category-filter="همه" aria-pressed="true">همه</button>
-    {% assign categories = site.posts | map: "category" | compact | uniq | sort %}
-    {% for category in categories %}
-      <button class="category-button" type="button" data-category-filter="{{ category | escape }}" aria-pressed="false">{{ category }}</button>
-    {% endfor %}
+    {% assign categories = language_posts | map: "category" | compact | uniq | sort %}
+    {% for category in categories %}<button class="category-button" type="button" data-category-filter="{{ category | escape }}" aria-pressed="false">{{ category }}</button>{% endfor %}
   </div>
-
   <div class="post-grid" id="post-grid">
-    {% for post in site.posts %}
+    {% for post in language_posts %}
       <article class="post-card" data-post-card data-category="{{ post.category | default: 'بدون دسته' | escape }}" data-search="{{ post.title | append: ' ' | append: post.description | append: ' ' | append: post.content | strip_html | normalize_whitespace | escape }}">
-        <span class="eyebrow">{{ post.category | default: "یادداشت" }}</span>
-        <h3><a href="{{ post.url | relative_url }}">{{ post.title | escape }}</a></h3>
+        <span class="eyebrow">{{ post.category | default: "یادداشت" }}</span><h3><a href="{{ post.url | relative_url }}">{{ post.title | escape }}</a></h3>
         <p>{{ post.description | default: post.excerpt | strip_html | truncate: 150 }}</p>
-        <div class="post-meta">
-          <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%-d %B %Y" }}</time>
-          <a class="read-more" href="{{ post.url | relative_url }}">ادامهٔ مطلب ←</a>
-        </div>
+        <div class="post-meta"><time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%-d %B %Y" }}</time><a class="read-more" href="{{ post.url | relative_url }}">ادامهٔ مطلب ←</a></div>
       </article>
-    {% else %}
-      <div class="empty-state">هنوز نوشته‌ای منتشر نشده؛ به‌زودی اولین نوشته اضافه می‌شود.</div>
-    {% endfor %}
+    {% else %}<div class="empty-state">هنوز نوشته‌ای منتشر نشده؛ به‌زودی اولین نوشته اضافه می‌شود.</div>{% endfor %}
   </div>
   <p class="empty-state" id="empty-state" hidden>نوشته‌ای با این جست‌وجو پیدا نشد.</p>
 </section>
-
-<section class="about" id="about">
-  <h2>دربارهٔ این وبلاگ</h2>
-  <p>این وبلاگ جایی برای ثبت یادگیری‌ها، پروژه‌های شخصی و چیزهایی است که در مسیر برنامه‌نویسی و کار با لینوکس کشف می‌کنم. نوشته‌ها با Markdown نگهداری می‌شوند تا اضافه‌کردن مطلب تازه ساده باشد.</p>
-</section>
+<section class="about" id="about"><h2>دربارهٔ این وبلاگ</h2><p>این وبلاگ جایی برای ثبت یادگیری‌ها، پروژه‌های شخصی و چیزهایی است که در مسیر برنامه‌نویسی و کار با لینوکس کشف می‌کنم. نوشته‌ها با Markdown نگهداری می‌شوند تا اضافه‌کردن مطلب تازه ساده باشد.</p></section>
