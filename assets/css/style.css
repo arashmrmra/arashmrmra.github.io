@@ -21,3 +21,10 @@
 .post-card h3 a:focus-visible,.primary-link:focus-visible,.secondary-link:focus-visible,.category-button:focus-visible,.language-toggle:focus-visible{outline:3px solid var(--accent2);outline-offset:3px}
 .post-card h3 a:hover{color:var(--accent2)}
 @media(max-width:650px){.hero{padding-top:44px}.hero-actions{align-items:stretch}.hero-actions a{flex:1}.topic-strip{gap:8px 14px}}
+
+
+/* Keep the topic chips readable in both RTL and LTR layouts */
+.topic-strip{align-items:center;gap:10px 12px}
+.topic-strip span{display:inline-flex;align-items:center;gap:7px;white-space:normal;direction:inherit;unicode-bidi:isolate;line-height:1.7}
+html[dir="rtl"] .topic-strip{direction:rtl}
+html[dir="ltr"] .topic-strip{direction:ltr}
