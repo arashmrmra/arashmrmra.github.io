@@ -4,3 +4,20 @@
 [hidden]{display:none!important}
 
 .language-toggle{display:inline-flex;align-items:center;justify-content:center;min-height:36px;padding:4px 11px;border:1px solid var(--line);border-radius:11px;color:var(--accent2);font-size:.84rem;font-weight:700}.language-toggle:hover{border-color:var(--accent);background:#a78bfa18}html[dir="ltr"] body{text-align:left}html[dir="ltr"] .eyebrow:before{display:none}html[dir="ltr"] .eyebrow:after{content:"";width:20px;height:2px;background:currentColor}html[dir="ltr"] .article-content blockquote{border-right:0;border-left:3px solid var(--accent)}html[dir="ltr"] .article-content pre{text-align:left}html[dir="ltr"] .article-end{flex-direction:row-reverse}html[dir="ltr"] .nav-links{direction:ltr}
+
+
+/* Homepage clarity and content-first hierarchy */
+.hero{max-width:820px;padding-top:66px;padding-bottom:38px}
+.hero p{max-width:680px}
+.hero-actions{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-top:26px}
+.primary-link,.secondary-link{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:44px;padding:10px 16px;border-radius:10px;font-weight:700;font-size:.92rem;transition:transform .18s,border-color .18s,background .18s}
+.primary-link{background:var(--accent);color:#10111a}
+.primary-link:hover{transform:translateY(-2px);background:var(--accent2)}
+.secondary-link{border:1px solid var(--line);color:var(--text)}
+.secondary-link:hover{border-color:var(--accent);background:var(--panel)}
+.topic-strip{display:flex;gap:10px 20px;flex-wrap:wrap;margin-top:28px;padding-top:18px;border-top:1px solid var(--line);color:var(--muted);font-size:.86rem}
+.topic-strip span{white-space:nowrap}
+#posts-title{scroll-margin-top:24px}
+.post-card h3 a:focus-visible,.primary-link:focus-visible,.secondary-link:focus-visible,.category-button:focus-visible,.language-toggle:focus-visible{outline:3px solid var(--accent2);outline-offset:3px}
+.post-card h3 a:hover{color:var(--accent2)}
+@media(max-width:650px){.hero{padding-top:44px}.hero-actions{align-items:stretch}.hero-actions a{flex:1}.topic-strip{gap:8px 14px}}
