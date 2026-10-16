@@ -20,6 +20,15 @@ layout: null
   {% for post in site.posts %}
   <url>
     <loc>{{ post.url | absolute_url }}</loc>
+    {% if post.translation_url %}
+    {% if post.lang == 'en' %}
+    <xhtml:link rel="alternate" hreflang="en" href="{{ post.url | absolute_url }}"/>
+    <xhtml:link rel="alternate" hreflang="fa" href="{{ post.translation_url | absolute_url }}"/>
+    {% else %}
+    <xhtml:link rel="alternate" hreflang="fa" href="{{ post.url | absolute_url }}"/>
+    <xhtml:link rel="alternate" hreflang="en" href="{{ post.translation_url | absolute_url }}"/>
+    {% endif %}
+    {% endif %}
     <lastmod>{{ post.last_modified_at | default: post.date | date_to_xmlschema }}</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>

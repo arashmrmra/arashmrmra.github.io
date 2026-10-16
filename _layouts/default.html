@@ -8,8 +8,15 @@
   <meta name="robots" content="index,follow,max-image-preview:large">
   <link rel="canonical" href="{{ page.url | absolute_url }}">
   {% if page.translation_url %}
-  <link rel="alternate" hreflang="{% if page.lang == 'en' %}fa{% else %}en{% endif %}" href="{{ page.translation_url | absolute_url }}">
+  {% if page.lang == 'en' %}
+  <link rel="alternate" hreflang="en" href="{{ page.url | absolute_url }}">
+  <link rel="alternate" hreflang="fa" href="{{ page.translation_url | absolute_url }}">
   <link rel="alternate" hreflang="x-default" href="{{ page.translation_url | absolute_url }}">
+  {% else %}
+  <link rel="alternate" hreflang="fa" href="{{ page.url | absolute_url }}">
+  <link rel="alternate" hreflang="en" href="{{ page.translation_url | absolute_url }}">
+  <link rel="alternate" hreflang="x-default" href="{{ page.url | absolute_url }}">
+  {% endif %}
   {% endif %}
   <meta property="og:type" content="{% if page.layout == 'post' %}article{% else %}website{% endif %}">
   <meta property="og:site_name" content="{{ page.site_label | default: site.title | escape }}">
