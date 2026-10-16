@@ -17,7 +17,7 @@
       <nav class="nav-links" aria-label="{% if current_lang == 'en' %}Main navigation{% else %}ناوبری اصلی{% endif %}">
         <a href="{{ home_url | relative_url }}">{% if current_lang == 'en' %}Home{% else %}خانه{% endif %}</a>
         <a href="{{ page.about_url | default: '/#about' | relative_url }}">{% if current_lang == 'en' %}About{% else %}درباره وبلاگ{% endif %}</a>
-        <a class="language-toggle" href="{{ page.translation_url | default: '/en/' | relative_url }}" lang="{% if current_lang == 'en' %}fa{% else %}en{% endif %}" aria-label="{% if current_lang == 'en' %}Switch to Persian{% else %}Switch to English{% endif %}">{% if current_lang == 'en' %}فارسی{% else %}English{% endif %}</a>
+        <a class="language-toggle" href="{% if current_lang == 'en' %}/{% else %}/en/{% endif %}" lang="{% if current_lang == 'en' %}fa{% else %}en{% endif %}" aria-label="{% if current_lang == 'en' %}Switch to Persian{% else %}Switch to English{% endif %}">{% if current_lang == 'en' %}فارسی{% else %}English{% endif %}</a>
         <button class="theme-toggle" id="theme-toggle" type="button" aria-label="{% if current_lang == 'en' %}Toggle color theme{% else %}تغییر حالت رنگ{% endif %}">◐</button>
       </nav>
     </header>
