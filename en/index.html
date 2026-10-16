@@ -1,0 +1,36 @@
+---
+layout: default
+title: Home
+lang: en
+direction: ltr
+site_label: Ordinary Blog
+home_url: /en/
+about_url: /en/#about
+description: Notes about programming, Linux, and building things.
+---
+{% assign language_posts = site.posts | where: "lang", "en" %}
+<section class="hero">
+  <span class="eyebrow">A little corner of the internet</span>
+  <h1>Hello, this is <span>Ordinary Blog</span>.</h1>
+  <p>Notes from the journey of learning, programming, and building things. Simple, honest, one step at a time.</p>
+</section>
+<section aria-labelledby="posts-title">
+  <div class="section-heading"><div><h2 id="posts-title">Posts</h2><p>Ideas and experiences worth writing down.</p></div><span class="eyebrow">{{ language_posts | size }} posts</span></div>
+  <div class="tools"><input class="search-box" id="post-search" type="search" placeholder="Search post titles and text…" aria-label="Search posts"></div>
+  <div class="category-list" aria-label="Filter by category">
+    <button class="category-button active" type="button" data-category-filter="All" aria-pressed="true">All</button>
+    {% assign categories = language_posts | map: "category" | compact | uniq | sort %}
+    {% for category in categories %}<button class="category-button" type="button" data-category-filter="{{ category | escape }}" aria-pressed="false">{{ category }}</button>{% endfor %}
+  </div>
+  <div class="post-grid" id="post-grid">
+    {% for post in language_posts %}
+      <article class="post-card" data-post-card data-category="{{ post.category | default: 'Uncategorized' | escape }}" data-search="{{ post.title | append: ' ' | append: post.description | append: ' ' | append: post.content | strip_html | normalize_whitespace | escape }}">
+        <span class="eyebrow">{{ post.category | default: "Notes" }}</span><h3><a href="{{ post.url | relative_url }}">{{ post.title | escape }}</a></h3>
+        <p>{{ post.description | default: post.excerpt | strip_html | truncate: 150 }}</p>
+        <div class="post-meta"><time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%B %-d, %Y" }}</time><a class="read-more" href="{{ post.url | relative_url }}">Read more →</a></div>
+      </article>
+    {% else %}<div class="empty-state">No posts yet. The first one will be here soon.</div>{% endfor %}
+  </div>
+  <p class="empty-state" id="empty-state" hidden>No posts matched your search.</p>
+</section>
+<section class="about" id="about"><h2>About this blog</h2><p>This is a place to document what I learn, personal projects, and discoveries from programming and using Linux. Posts are written in Markdown to make publishing new articles straightforward.</p></section>
