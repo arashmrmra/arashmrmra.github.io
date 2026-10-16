@@ -5,8 +5,46 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#0b0d12">
   <meta name="description" content="{{ page.description | default: site.description | escape }}">
+  <meta name="robots" content="index,follow,max-image-preview:large">
+  <link rel="canonical" href="{{ page.url | absolute_url }}">
+  {% if page.translation_url %}
+  <link rel="alternate" hreflang="{% if page.lang == 'en' %}fa{% else %}en{% endif %}" href="{{ page.translation_url | absolute_url }}">
+  <link rel="alternate" hreflang="x-default" href="{{ page.translation_url | absolute_url }}">
+  {% endif %}
+  <meta property="og:type" content="{% if page.layout == 'post' %}article{% else %}website{% endif %}">
+  <meta property="og:site_name" content="{{ page.site_label | default: site.title | escape }}">
+  <meta property="og:title" content="{% if page.title %}{{ page.title | escape }} · {% endif %}{{ page.site_label | default: site.title | escape }}">
+  <meta property="og:description" content="{{ page.description | default: site.description | escape }}">
+  <meta property="og:url" content="{{ page.url | absolute_url }}">
+  <meta property="og:locale" content="{% if page.lang == 'en' %}en_US{% else %}fa_IR{% endif %}">
+  <meta name="twitter:card" content="summary">
   <title>{% if page.title %}{{ page.title | escape }} · {% endif %}{{ page.site_label | default: site.title | escape }}</title>
   <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
+  {% if page.layout == 'post' %}
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": {{ page.title | jsonify }},
+    "description": {{ page.description | default: page.excerpt | strip_html | normalize_whitespace | jsonify }},
+    "datePublished": "{{ page.date | date_to_xmlschema }}",
+    "dateModified": "{{ page.last_modified_at | default: page.date | date_to_xmlschema }}",
+    "inLanguage": "{{ page.lang | default: 'fa' }}",
+    "mainEntityOfPage": { "@type": "WebPage", "@id": "{{ page.url | absolute_url }}" },
+    "publisher": { "@type": "Person", "name": {{ page.author | default: page.site_label | default: site.title | jsonify }} }
+  }
+  </script>
+  {% else %}
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": {{ page.site_label | default: site.title | jsonify }},
+    "url": "{{ page.url | absolute_url }}",
+    "inLanguage": "{{ page.lang | default: site.lang | default: 'fa' }}"
+  }
+  </script>
+  {% endif %}
 </head>
 <body>
   {% assign current_lang = page.lang | default: site.lang | default: 'fa' %}
