@@ -4,14 +4,14 @@
   const cards = [...document.querySelectorAll("[data-post-card]")];
   const empty = document.querySelector("#empty-state");
   if (!cards.length) return;
-  let activeCategory = "همه";
+  let activeCategory = buttons.find(button => button.classList.contains("active"))?.dataset.categoryFilter || buttons[0]?.dataset.categoryFilter || "";
   const apply = () => {
     const query = (search?.value || "").trim().toLocaleLowerCase("fa");
     let shown = 0;
     cards.forEach(card => {
       const category = card.dataset.category || "";
       const haystack = (card.dataset.search || card.textContent).toLocaleLowerCase("fa");
-      const visible = (activeCategory === "همه" || category === activeCategory) && haystack.includes(query);
+      const visible = (!activeCategory || activeCategory === "همه" || activeCategory === "All" || category === activeCategory) && haystack.includes(query);
       card.hidden = !visible;
       if (visible) shown++;
     });
