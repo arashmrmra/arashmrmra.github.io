@@ -3,6 +3,8 @@ layout: post
 title: "سلام دنیا؛ شروع یک وبلاگ معمولی"
 date: 2026-10-16 21:00:00 +0330
 category: یادداشت
+lang: fa
+translation_url: /en/posts/welcome/
 description: "این اولین نوشتهٔ وبلاگ است؛ جایی برای ثبت تجربه‌ها، پروژه‌ها و چیزهایی که یاد می‌گیرم."
 ---
 
