@@ -1,14 +1,15 @@
 ---
 layout: default
 ---
+{% assign current_lang = page.lang | default: 'fa' %}
 <article class="article-page">
-  <a class="back-link" href="{{ '/' | relative_url }}">← بازگشت به همه نوشته‌ها</a>
+  <a class="back-link" href="{{ page.home_url | default: '/' | relative_url }}">{% if current_lang == 'en' %}← Back to all posts{% else %}← بازگشت به همه نوشته‌ها{% endif %}</a>
   <header class="article-header">
     {% if page.category %}<span class="eyebrow">{{ page.category }}</span>{% endif %}
     <h1>{{ page.title | escape }}</h1>
     {% if page.description %}<p class="article-description">{{ page.description | escape }}</p>{% endif %}
-    <div class="article-meta"><time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: "%-d %B %Y" }}</time><span>·</span><span>{{ page.author | default: site.title }}</span></div>
+    <div class="article-meta"><time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: "%-d %B %Y" }}</time><span>·</span><span>{{ page.author | default: page.site_label | default: site.title }}</span></div>
   </header>
   <div class="article-content">{{ content }}</div>
-  <div class="article-end"><span>پایان این نوشته</span><a href="{{ '/' | relative_url }}">نوشته‌های بیشتر ←</a></div>
+  <div class="article-end"><span>{% if current_lang == 'en' %}End of this post{% else %}پایان این نوشته{% endif %}</span><a href="{{ page.home_url | default: '/' | relative_url }}">{% if current_lang == 'en' %}More posts ←{% else %}نوشته‌های بیشتر ←{% endif %}</a></div>
 </article>
