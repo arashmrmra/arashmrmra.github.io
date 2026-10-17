@@ -56,12 +56,20 @@
 <body>
   {% assign current_lang = page.lang | default: site.lang | default: 'fa' %}
   {% assign home_url = page.home_url | default: '/' %}
+  {% if page.contact_url %}
+    {% assign contact_url = page.contact_url %}
+  {% elsif current_lang == 'en' %}
+    {% assign contact_url = '/en/#contact' %}
+  {% else %}
+    {% assign contact_url = '/#contact' %}
+  {% endif %}
   <div class="site-shell">
     <header class="site-header">
       <a class="brand" href="{{ home_url | relative_url }}"><span class="brand-mark">{% if current_lang == 'en' %}O{% else %}و{% endif %}</span><span>{{ page.site_label | default: site.title }}</span></a>
       <nav class="nav-links" aria-label="{% if current_lang == 'en' %}Main navigation{% else %}ناوبری اصلی{% endif %}">
         <a href="{{ home_url | relative_url }}">{% if current_lang == 'en' %}Home{% else %}خانه{% endif %}</a>
         <a href="{{ page.about_url | default: '/#about' | relative_url }}">{% if current_lang == 'en' %}About{% else %}درباره وبلاگ{% endif %}</a>
+        <a href="{{ contact_url | relative_url }}">{% if current_lang == 'en' %}Contact{% else %}ارتباط با من{% endif %}</a>
         <a class="language-toggle" href="{% if current_lang == 'en' %}/{% else %}/en/{% endif %}" lang="{% if current_lang == 'en' %}fa{% else %}en{% endif %}" aria-label="{% if current_lang == 'en' %}Switch to Persian{% else %}Switch to English{% endif %}">{% if current_lang == 'en' %}فارسی{% else %}English{% endif %}</a>
         <button class="theme-toggle" id="theme-toggle" type="button" aria-label="{% if current_lang == 'en' %}Toggle color theme{% else %}تغییر حالت رنگ{% endif %}">◐</button>
       </nav>
